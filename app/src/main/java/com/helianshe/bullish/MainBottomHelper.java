@@ -17,6 +17,7 @@ import android.widget.RadioGroup;
 
 
 import com.helianshe.bullish.base.BaseActivity;
+import com.helianshe.bullish.base.BaseWebViewFragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -58,9 +59,10 @@ public class MainBottomHelper {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 int index = group.indexOfChild(group.findViewById(checkedId));
                 Fragment fragment = setCurrentFragment(index);
-                if (fragment instanceof WithDrawFragment){
-                    ((WithDrawFragment)fragment).refreshWebView();
-                }
+                //todo
+//                if (fragment instanceof WithDrawFragment){
+//                    ((WithDrawFragment)fragment).refreshWebView();
+//                }
 
             }
         });
@@ -138,21 +140,22 @@ public class MainBottomHelper {
             StartConfigBean.BottomMenuBean bottomMenuBean = bottomMenuBeans.get(i);
             if (Constants.TAB_HOME.equals(bottomMenuBean.getId())) {
                 AppCompatRadioButton homeBottomBar=bottomBarItem(bottomMenuBean.getName(), R.drawable.app_bottom_tab_text_selector, R.drawable.app_bottom_bar_home_selector);
-                HomeFragment home = HomeFragment.newInstance("", ReportPageConfig.FRAGMENT_HOME, bottomMenuBean.getTarget());
+                BaseWebViewFragment home = BaseWebViewFragment.newInstance( bottomMenuBean.getTarget());
                 fragmentList.add(home);
                 Constants.TAB_MAIN_INDEX = i;
                 homeBottomBar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         if (mCurrentFocusIndex == position){
-                            home.showRefresh();
+                            //todo
+//                            home.showRefresh();
                         }
                         mCurrentFocusIndex = position;
                     }
                 });
             } else if (Constants.TAB_WITHDRAW.equals(bottomMenuBean.getId())) {
-                AppCompatRadioButton radioButton = bottomBarItem(bottomMenuBean.getName(), R.drawable.app_bottom_tab_text_selector, R.drawable.app_bottom_bar_withdraw_selector);
-                fragmentList.add(WithDrawFragment.newInstance("", ReportPageConfig.FRAGMENT_WITHDRAW, bottomMenuBean.getTarget()));
+                AppCompatRadioButton radioButton = bottomBarItem(bottomMenuBean.getName(), R.drawable.app_bottom_tab_text_selector, R.drawable.app_bottom_bar_home_selector);
+                fragmentList.add(BaseWebViewFragment.newInstance( bottomMenuBean.getTarget()));
                 Constants.TAB_WITHDRAW_INDEX = i;
                 radioButton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -162,8 +165,8 @@ public class MainBottomHelper {
                 });
 
             } else if (Constants.TAB_WELFARE.equals(bottomMenuBean.getId())) {
-                AppCompatRadioButton radioButton = bottomBarItem(bottomMenuBean.getName(), R.drawable.app_bottom_tab_text_selector, R.drawable.app_bottom_bar_welfare_selector);
-                fragmentList.add(WelfareFragment.newInstance("", ReportPageConfig.FRAGMENT_WELFARE, bottomMenuBean.getTarget()));
+                AppCompatRadioButton radioButton = bottomBarItem(bottomMenuBean.getName(), R.drawable.app_bottom_tab_text_selector, R.drawable.app_bottom_bar_home_selector);
+                fragmentList.add(BaseWebViewFragment.newInstance(bottomMenuBean.getTarget()));
                 Constants.TAB_WELFARE_INDEX = i;
                 radioButton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -173,8 +176,8 @@ public class MainBottomHelper {
                 });
 
             } else if (Constants.TAB_MINE.equals(bottomMenuBean.getId())) {
-                AppCompatRadioButton radioButton = bottomBarItem(bottomMenuBean.getName(), R.drawable.app_bottom_tab_text_selector, R.drawable.app_bottom_bar_mine_selector);
-                fragmentList.add(new MineFragment());
+                AppCompatRadioButton radioButton = bottomBarItem(bottomMenuBean.getName(), R.drawable.app_bottom_tab_text_selector, R.drawable.app_bottom_bar_home_selector);
+                fragmentList.add(BaseWebViewFragment.newInstance(bottomMenuBean.getTarget()));
                 Constants.TAB_MY_INDEX = i;
                 radioButton.setOnClickListener(new View.OnClickListener() {
                     @Override

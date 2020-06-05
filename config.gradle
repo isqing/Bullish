@@ -10,7 +10,7 @@ ext {
     //依赖库
     dependencies = [
 
-            ArouterCompiler: 'com.alibaba:arouter-compiler:1.2.1'
+//            ArouterCompiler: 'com.alibaba:arouter-compiler:1.2.1'
     ]
 
 }
