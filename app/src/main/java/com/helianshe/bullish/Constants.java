@@ -24,7 +24,7 @@ public class Constants {
      */
     private static  String DEV_HOME_URL= H5_HOST_DEV+"/main/index.html";
     private static  String PRE_HOME_URL= H5_HOST_PRE+"/main/index.html";
-    public static  String HOME_URL= AppUtils.isApkInDebug(AppApplication.getInstance())?DEV_HOME_URL:PRE_HOME_URL;
+    public static  String HOME_URL= "http://helianshe.com/user/index.html";
 
 
     /**
@@ -32,7 +32,7 @@ public class Constants {
      */
     private static  String DEV_WITHDRAW_URL= "https://withdrawgoodpraise-qa.qttfe.com/index.html";
     private static  String PRE_WITHDRAW_URL= "https://goodpraisewithdraw.1sapp.com/index.html";
-    public static  String WITHDRAW_URL= AppUtils.isApkInDebug(AppApplication.getInstance())?DEV_WITHDRAW_URL:PRE_WITHDRAW_URL;
+    public static  String WITHDRAW_URL= "http://helianshe.com/extend/index.html";
 
     /**
      /**
@@ -40,14 +40,14 @@ public class Constants {
      */
     private static  String DEV_WELFARE_URL= H5_HOST_DEV+"/goldTask/index.html";
     private static  String PRE_WELFARE_URL= H5_HOST_PRE+"/goldTask/index.html";
-    public static  String WELFARE_URL= AppUtils.isApkInDebug(AppApplication.getInstance())?DEV_WELFARE_URL:PRE_WELFARE_URL;
+    public static  String WELFARE_URL= "http://helianshe.com/assets/assetsindex.html";
 
     /**
      * 我的
      */
     private static  String DEV_MINE_URL= H5_HOST_DEV+"/goldTask/index.html";
     private static  String PRE_MINE_URL= H5_HOST_PRE+"/goldTask/index.html";
-    public static  String MINE_URL= AppUtils.isApkInDebug(AppApplication.getInstance())?DEV_WELFARE_URL:PRE_WELFARE_URL;
+    public static  String MINE_URL= "http://helianshe.com/user/myinfo.html";
     /**
      /**
      * 商品详情

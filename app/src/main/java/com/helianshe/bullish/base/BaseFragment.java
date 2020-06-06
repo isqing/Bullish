@@ -113,7 +113,6 @@ public class BaseFragment extends Fragment {
                 return;
             }
             if (isFragmentVisible()) {
-                Log.i("qing==", "tryToChangeVisibility: onFragmentResume");
 
                 onFragmentResume(isFirst, isViewDestroyed);
                 isLastVisible = true;

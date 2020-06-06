@@ -19,13 +19,22 @@ android {
 
     buildTypes {
         release {
-
+            release {
+                minifyEnabled false
+                proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            }
         }
         preRelease {
-
+            release {
+                minifyEnabled false
+                proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            }
         }
         debug {
-
+            release {
+                minifyEnabled false
+                proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            }
         }
     }
 
@@ -36,9 +45,9 @@ android {
     }
 }
 
-dependencies {
-    implementation files('libs/msdk.jar')
-}
+//dependencies {
+//    implementation files('libs/msdk.jar')
+//}
 
 repositories {
     flatDir {
@@ -57,7 +66,10 @@ dependencies {
     api "com.android.support.constraint:constraint-layout:1.0.2"
     implementation "com.github.bumptech.glide:glide:3.7.0"
     implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
-   }
+    implementation 'com.github.lzyzsd:jsbridge:1.0.4'
+    api 'io.reactivex.rxjava2:rxjava:2.2.0'
+
+}
 }
 
 

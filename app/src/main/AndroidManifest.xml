@@ -19,13 +19,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity"
-            android:theme="@style/AppActivityTheme">
+            android:theme="@style/AppActivityTheme"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".base.BaseWebViewActivity"
+            android:theme="@style/AppActivityTheme"
+            android:screenOrientation="portrait"/>
+        <!-- 声明SDK所需要的组件 -->
+
         <!-- 声明SDK所需要的组件 -->
         <activity
             android:name="com.qq.e.ads.ADActivity"
@@ -39,6 +45,10 @@
             android:name="com.qq.e.ads.LandscapeADActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:screenOrientation="landscape" />
+
+
+        <activity android:name="com.myhayo.madsdk.AppActivity" />
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"
@@ -52,6 +62,7 @@
         <service
             android:name="com.qq.e.comm.DownloadService"
             android:exported="false" />
+
     </application>
 
 </manifest>

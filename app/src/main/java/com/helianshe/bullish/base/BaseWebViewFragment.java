@@ -15,6 +15,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
+import com.github.lzyzsd.jsbridge.BridgeWebView;
 import com.helianshe.bullish.HomeFragment;
 import com.helianshe.bullish.R;
 import com.helianshe.bullish.utils.WebviewUtils;
@@ -22,7 +23,7 @@ import com.helianshe.bullish.utils.WebviewUtils;
 import java.util.List;
 
 public class BaseWebViewFragment extends BaseFragment {
-    private WebView webView;
+    private BridgeWebView webView;
     private ProgressBar progressBar;
     private String url;
     public static BaseWebViewFragment newInstance(String url) {
@@ -47,11 +48,16 @@ public class BaseWebViewFragment extends BaseFragment {
         webView=view.findViewById(R.id.webview);
         progressBar=view.findViewById(R.id.pb_web_progress);
         WebviewUtils.initWebView(webView,progressBar);
+        WebviewUtils.jsRegister(webView,getActivity());
         return view;
     }
 
     public void onFragmentResume(boolean isFirst, boolean isViewDestroyed) {
-        load();
+        if (isFirst) {
+            load();
+        }else {
+            WebviewUtils.callOnResume(webView);
+        }
     }
 
     public WebView getWebView() {
@@ -66,10 +72,16 @@ public class BaseWebViewFragment extends BaseFragment {
      * Fragment 不可见时回调
      */
     public void onFragmentPause() {
-
+        WebviewUtils.callOnPause(webView);
     }
     public int getContentLayoutId(){
         return R.layout.fragment_home;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        WebviewUtils.onDestroy(webView);
     }
 }
 

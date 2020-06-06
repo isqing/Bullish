@@ -9,13 +9,15 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.ProgressBar;
 
+import com.github.lzyzsd.jsbridge.BridgeWebView;
 import com.helianshe.bullish.R;
 import com.helianshe.bullish.utils.WebviewUtils;
 
 public  abstract class BaseWebViewActivity extends BaseActivity {
-    private WebView webView;
+    private BridgeWebView webView;
     private ProgressBar progressBar;
     private String url;
+    private boolean isFirst=true;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -23,15 +25,27 @@ public  abstract class BaseWebViewActivity extends BaseActivity {
         setContentView(getContentLayoutId());
         webView=findViewById(R.id.webview);
         progressBar=findViewById(R.id.pb_web_progress);
-        WebviewUtils.initWebView(webView,progressBar);
         url=getIntent().getStringExtra("url");
+        WebviewUtils.initWebView(webView,progressBar);
+        WebviewUtils.jsRegister(webView,this);
     }
 
 
     @Override
     protected void onResume() {
         super.onResume();
-        load();
+        if (isFirst) {
+            isFirst=false;
+            load();
+        }else {
+            WebviewUtils.callOnResume(webView);
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        WebviewUtils.callOnPause(webView);
     }
 
     public WebView getWebView() {
@@ -39,9 +53,7 @@ public  abstract class BaseWebViewActivity extends BaseActivity {
     }
     public void load(){
         webView.loadUrl(url);
-
     }
-
 
     public int getContentLayoutId(){
         return R.layout.fragment_home;
