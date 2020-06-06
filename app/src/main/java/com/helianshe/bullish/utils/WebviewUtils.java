@@ -31,6 +31,7 @@ public class WebviewUtils {
             Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.WRITE_EXTERNAL_STORAGE};
     private static WebviewUtils webviewUtils = new WebviewUtils();
+    private boolean isComplete;
 
 
     public static WebviewUtils getInstance() {
@@ -135,17 +136,18 @@ public class WebviewUtils {
     }
 
     public void rewardVideoView(Activity context, final WebView webView, final String adCode) {
-        boolean isComplete=false;
+        isComplete = false;
         rewardVideoView = new RewardVideoAd(context, adCode, new RewardAdListener() {
             @Override
             public void onAdVideoComplete() {
                 Log.d(TAG, "onAdVideoComplete: ");
-                isComplete=true;
+                isComplete =true;
             }
 
             @Override
             public void onVideoCached() {
                 Log.d(TAG, "onVideoCached: ");
+                isComplete =false;
                 rewardVideoView.loadRewardVideo();
 
             }
