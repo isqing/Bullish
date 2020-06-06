@@ -21,7 +21,7 @@ public abstract class BaseActivity<P extends BasePresenter>  extends AppCompatAc
      * 初始化状态栏设置
      */
     protected void initStatusBar() {
-        StatusBar.setStatusBarLightMode(this, R.color.white);
+        StatusBar.setStatusBarLightMode(this, R.color.green);
     }
     @Override
 
@@ -48,15 +48,17 @@ public abstract class BaseActivity<P extends BasePresenter>  extends AppCompatAc
     public void bindView() {
 
         iPresenter = createPresenter();
-
-        iPresenter.register(this);
+        if (iPresenter!=null) {
+            iPresenter.register(this);
+        }
 
     }
     @Override
 
     public void UnbindView() {
-
-        iPresenter.unRegister();
+        if (iPresenter!=null) {
+            iPresenter.unRegister();
+        }
 
     }
 

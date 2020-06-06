@@ -139,7 +139,7 @@ public class BaseFragment extends Fragment {
      * @param isViewDestroyed Fragment 的 View 被回收，但是Fragment实例仍在。
      */
     public void onFragmentResume(boolean isFirst, boolean isViewDestroyed) {
-        Log.i("qing==onFragmentResume", "onFragmentResume: ");
+        Log.d("qing==onFragmentResume", "onFragmentResume: ");
 
     }
 
@@ -147,7 +147,7 @@ public class BaseFragment extends Fragment {
      * Fragment 不可见时回调
      */
     public void onFragmentPause() {
-        Log.i("qing==onFragmentPause", "onFragmentPause: ");
+        Log.d("qing==onFragmentPause", "onFragmentPause: ");
 
     }
 }

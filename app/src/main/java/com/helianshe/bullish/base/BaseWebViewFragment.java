@@ -1,29 +1,20 @@
 package com.helianshe.bullish.base;
 
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebChromeClient;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
-import com.github.lzyzsd.jsbridge.BridgeWebView;
-import com.helianshe.bullish.HomeFragment;
 import com.helianshe.bullish.R;
+import com.helianshe.bullish.utils.WebAppInterface;
 import com.helianshe.bullish.utils.WebviewUtils;
 
-import java.util.List;
-
 public class BaseWebViewFragment extends BaseFragment {
-    private BridgeWebView webView;
+    private WebView webView;
     private ProgressBar progressBar;
     private String url;
     public static BaseWebViewFragment newInstance(String url) {
@@ -47,8 +38,10 @@ public class BaseWebViewFragment extends BaseFragment {
         View view=inflater.inflate(getContentLayoutId(), container, false);
         webView=view.findViewById(R.id.webview);
         progressBar=view.findViewById(R.id.pb_web_progress);
-        WebviewUtils.initWebView(webView,progressBar);
-        WebviewUtils.jsRegister(webView,getActivity());
+        WebviewUtils.getInstance().initWebView(webView,progressBar);
+//        webView.setDefaultHandler(new DefaultHandler());
+        WebAppInterface object = new WebAppInterface(getActivity(),webView);
+        webView.addJavascriptInterface(object, "Android");
         return view;
     }
 
@@ -56,7 +49,7 @@ public class BaseWebViewFragment extends BaseFragment {
         if (isFirst) {
             load();
         }else {
-            WebviewUtils.callOnResume(webView);
+            WebviewUtils.getInstance().callOnResume(webView);
         }
     }
 
@@ -72,7 +65,7 @@ public class BaseWebViewFragment extends BaseFragment {
      * Fragment 不可见时回调
      */
     public void onFragmentPause() {
-        WebviewUtils.callOnPause(webView);
+        WebviewUtils.getInstance().callOnPause(webView);
     }
     public int getContentLayoutId(){
         return R.layout.fragment_home;
@@ -81,7 +74,7 @@ public class BaseWebViewFragment extends BaseFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        WebviewUtils.onDestroy(webView);
+        WebviewUtils.getInstance().onDestroy(webView);
     }
 }
 

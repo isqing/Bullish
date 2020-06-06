@@ -1,20 +1,16 @@
 package com.helianshe.bullish.base;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.util.Log;
 import android.webkit.WebView;
 import android.widget.ProgressBar;
 
-import com.github.lzyzsd.jsbridge.BridgeWebView;
 import com.helianshe.bullish.R;
+import com.helianshe.bullish.utils.WebAppInterface;
 import com.helianshe.bullish.utils.WebviewUtils;
 
-public  abstract class BaseWebViewActivity extends BaseActivity {
-    private BridgeWebView webView;
+public  class BaseWebViewActivity extends BaseActivity {
+    private WebView webView;
     private ProgressBar progressBar;
     private String url;
     private boolean isFirst=true;
@@ -26,8 +22,17 @@ public  abstract class BaseWebViewActivity extends BaseActivity {
         webView=findViewById(R.id.webview);
         progressBar=findViewById(R.id.pb_web_progress);
         url=getIntent().getStringExtra("url");
-        WebviewUtils.initWebView(webView,progressBar);
-        WebviewUtils.jsRegister(webView,this);
+//        webView.setDefaultHandler(new DefaultHandler());
+
+//        webView.addJavascriptInterface(new WebViewJavascriptBridge(webView.getCallbacks(), webView), "android");
+        WebviewUtils.getInstance().initWebView(webView,progressBar);
+        WebAppInterface object = new WebAppInterface(this,webView);
+        webView.addJavascriptInterface(object, "Android");
+    }
+
+    @Override
+    protected BasePresenter createPresenter() {
+        return null;
     }
 
 
@@ -38,14 +43,14 @@ public  abstract class BaseWebViewActivity extends BaseActivity {
             isFirst=false;
             load();
         }else {
-            WebviewUtils.callOnResume(webView);
+            WebviewUtils.getInstance().callOnResume(webView);
         }
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        WebviewUtils.callOnPause(webView);
+        WebviewUtils.getInstance().callOnPause(webView);
     }
 
     public WebView getWebView() {
@@ -57,6 +62,13 @@ public  abstract class BaseWebViewActivity extends BaseActivity {
 
     public int getContentLayoutId(){
         return R.layout.fragment_home;
+    }
+
+    @Override
+    protected void onDestroy() {
+        Log.i("qing==", "onDestroy: ");
+        super.onDestroy();
+        WebviewUtils.getInstance().onDestroy(webView);
     }
 }
 

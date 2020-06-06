@@ -1,29 +1,14 @@
 package com.helianshe.bullish;
 
-import android.Manifest;
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.nfc.Tag;
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.Settings;
-import android.util.Log;
 import android.view.View;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import com.helianshe.bullish.base.BaseActivity;
-import com.helianshe.bullish.base.BasePresenter;
 import com.helianshe.bullish.presenter.MainContract;
 import com.helianshe.bullish.presenter.MainPresenter;
 import com.helianshe.bullish.utils.WebviewUtils;
-import com.myhayo.dsp.listener.RewardAdListener;
-import com.myhayo.dsp.view.RewardVideoAd;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends BaseActivity<MainPresenter> implements MainContract.View{
@@ -51,7 +36,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                WebviewUtils.requestRewardVideoView(MainActivity.this,"SDK21AC28AB7734");
+//                WebviewUtils.getInstance().requestRewardVideoView(MainActivity.this,"SDK21AC28AB7734");
             }
         });
     }
