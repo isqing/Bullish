@@ -170,17 +170,18 @@ public class WebviewUtils {
 
             @Override
             public void onAdClose() {
-
-            }
-
-            @Override
-            public void onAdFinish() {
-                callRewardVideo(webView, 0);
+                Log.i(TAG, "onAdClose: ");
                 if (isComplete){
                     callRewardVideo(webView, 1);
                 }else {
                     callRewardVideo(webView, 0);
                 }
+            }
+
+            @Override
+            public void onAdFinish() {
+                Log.d(TAG, "onAdFinish: ");
+
             }
 
 //            @Override
