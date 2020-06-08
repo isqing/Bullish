@@ -148,7 +148,7 @@ public class WebviewUtils {
             public void onVideoCached() {
                 Log.d(TAG, "onVideoCached: ");
                 isComplete =false;
-                rewardVideoView.loadRewardVideo();
+                rewardVideoView.showRewardVideo();
 
             }
 
@@ -169,17 +169,32 @@ public class WebviewUtils {
             }
 
             @Override
-            public void onAdEnd() {
-                Log.d(TAG, "onAdClose: ");
+            public void onAdClose() {
 
+            }
+
+            @Override
+            public void onAdFinish() {
                 callRewardVideo(webView, 0);
                 if (isComplete){
                     callRewardVideo(webView, 1);
                 }else {
                     callRewardVideo(webView, 0);
                 }
-
             }
+
+//            @Override
+//            public void onAdEnd() {
+//                Log.d(TAG, "onAdClose: ");
+//
+//                callRewardVideo(webView, 0);
+//                if (isComplete){
+//                    callRewardVideo(webView, 1);
+//                }else {
+//                    callRewardVideo(webView, 0);
+//                }
+//
+//            }
 
             @Override
             public void onAdShow() {
