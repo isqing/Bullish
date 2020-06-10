@@ -225,4 +225,10 @@ public class WebviewUtils {
 
         }
     }
+    public void callBackStoragePermission(WebView webView,int isSucc){
+        if (webView != null) {
+            webView.loadUrl("javascript:callBackStoragePermission(" + isSucc + ")");
+
+        }
+    }
 }
