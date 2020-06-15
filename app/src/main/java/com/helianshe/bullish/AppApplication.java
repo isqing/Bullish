@@ -3,9 +3,10 @@ package com.helianshe.bullish;
 import android.app.Application;
 import android.content.Context;
 
+import com.liyaqing.download.App;
 import com.myhayo.madsdk.util.DeviceUtil;
 
-public class AppApplication extends Application {
+public class AppApplication extends App {
     private static Context context;
 
     @Override

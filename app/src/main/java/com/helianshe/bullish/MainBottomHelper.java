@@ -18,10 +18,8 @@ import android.widget.RadioGroup;
 
 import com.helianshe.bullish.base.BaseActivity;
 import com.helianshe.bullish.base.BaseWebViewFragment;
-import com.helianshe.bullish.utils.ScreenUtils;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class MainBottomHelper {

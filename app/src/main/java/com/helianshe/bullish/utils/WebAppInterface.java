@@ -85,7 +85,7 @@ public class WebAppInterface {
                 RxPermissions rxPermissions = new RxPermissions(activity);
                 rxPermissions.setLogging(BuildConfig.DEBUG);
                 rxPermissions
-                        .requestEachCombined(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        .requestEachCombined(Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE)
                         .subscribe(new Observer<Permission>() {
                             @Override
                             public void onSubscribe(Disposable d) {

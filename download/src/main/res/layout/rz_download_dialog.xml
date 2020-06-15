@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="288dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/qdown_corner_white"
+        android:orientation="vertical"
+        android:paddingBottom="20dp">
+
+        <ImageView
+            android:id="@+id/iv_close"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_gravity="top|right"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:src="@mipmap/icon_short_video_close_task" />
+
+        <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="11dp"
+            android:src="@mipmap/qdown_ic_downloader" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="游戏"
+            android:textColor="#FF313332"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/tv_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:text=""
+            android:textColor="#FF313332"
+            android:textSize="15dp" />
+
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="45dp"-->
+        <!--            android:layout_gravity="center_horizontal"-->
+        <!--            android:layout_marginTop="10dp"-->
+        <!--            android:orientation="horizontal">-->
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/qdown_tv_progress"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                android:text="0"-->
+        <!--                android:textColor="#313332"-->
+        <!--                android:textSize="24dp"-->
+        <!--                android:textStyle="bold" />-->
+
+        <!--            <TextView-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                android:layout_gravity="bottom"-->
+        <!--                android:text="%"-->
+        <!--                android:textColor="#313332"-->
+        <!--                android:textSize="24dp"-->
+        <!--                android:textStyle="bold" />-->
+        <!--        </LinearLayout>-->
+
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="257dp"-->
+        <!--            android:layout_height="46dp"-->
+        <!--            android:layout_gravity="center_horizontal"-->
+        <!--            android:layout_marginTop="4dp"-->
+        <!--            android:background="@drawable/bg_ad_download_round">-->
+        <!--        <ProgressBar-->
+        <!--            android:id="@+id/qdown_progressbar"-->
+        <!--            android:layout_width="256dp"-->
+        <!--            android:layout_height="@dimen/dip44"-->
+        <!--            android:paddingLeft="1dp"-->
+        <!--            android:layout_gravity="center"-->
+        <!--            android:indeterminate="false"-->
+        <!--            android:indeterminateOnly="false"-->
+        <!--            android:max="100"-->
+        <!--            android:progress="0"-->
+        <!--            android:progressDrawable="@drawable/qdown_dialog_custom_progressbar_task" />-->
+        <!--        </LinearLayout>-->
+
+        <com.liyaqing.download.widget.FlikerProgressBar
+            android:id="@+id/round_flikerbar"
+            android:layout_width="256dp"
+            android:layout_height="44dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="23dp"
+            app:loadingColor="#00C882"
+            app:radius="6dp"
+            app:borderWidth="0.5dp"
+            app:stopColor="#00C882"
+            app:textSize="17sp" />
+    </LinearLayout>
+
+
+</FrameLayout>
