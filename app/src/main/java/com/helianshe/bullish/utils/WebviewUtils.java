@@ -141,7 +141,6 @@ public class WebviewUtils {
             @Override
             public void onAdVideoComplete() {
                 Log.d(TAG, "onAdVideoComplete: ");
-                isComplete =true;
             }
 
             @Override
@@ -181,6 +180,7 @@ public class WebviewUtils {
             @Override
             public void onAdFinish() {
                 Log.d(TAG, "onAdFinish: ");
+                isComplete =true;
 
             }
 

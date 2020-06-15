@@ -12,7 +12,6 @@ public class AppApplication extends Application {
     public void onCreate() {
         super.onCreate();
         context = getApplicationContext();
-        DeviceUtil.setOaid("237819312302");
 
     }
     public static Context getInstance() {
